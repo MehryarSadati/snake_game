@@ -1,8 +1,8 @@
 from turtle import Turtle
 from random import randint as r
 
+
 class Food(Turtle):
-    
     def __init__(self):
         super().__init__()
         self.shape("circle")
@@ -11,7 +11,6 @@ class Food(Turtle):
         self.color("red")
         self.speed("fastest")
         self.add_new()
-        
 
     def add_new(self):
         location_x = r(-265, 265)

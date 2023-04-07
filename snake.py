@@ -7,8 +7,8 @@ DOWN = 270
 RIGHT = 0
 LEFT = 180
 
-class Snake:
 
+class Snake:
     def __init__(self):
         self.create_snake()
         self.head = self.segments[0]
@@ -34,7 +34,7 @@ class Snake:
             new_position = self.segments[seg_num - 1].position()
             self.segments[seg_num].goto(new_position)
         self.head.forward(MOVING_DISTANCE)
-    
+
     def up(self):
         if self.head.heading() != DOWN:
             self.head.setheading(UP)
@@ -46,19 +46,26 @@ class Snake:
     def left(self):
         if self.head.heading() != RIGHT:
             self.head.setheading(LEFT)
-    
+
     def right(self):
         if self.head.heading() != LEFT:
             self.head.setheading(RIGHT)
 
     def has_collided_with_walls(self):
-        return self.head.xcor() > 300 or self.head.xcor() < -300 or self.head.ycor() > 300 or self.head.ycor() < -300
-    
+        return (
+            self.head.xcor() > 300
+            or self.head.xcor() < -300
+            or self.head.ycor() > 300
+            or self.head.ycor() < -300
+        )
+
     def has_collided_with_segment(self, segment):
         return self.head.distance(segment) < 5
-    
+
     def has_collided_with_itself(self):
-        return any(self.has_collided_with_segment(segment) for segment in self.segments[1:])
+        return any(
+            self.has_collided_with_segment(segment) for segment in self.segments[1:]
+        )
 
     def game_over(self):
         if self.has_collided_with_walls():

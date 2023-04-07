@@ -5,17 +5,17 @@ ALIGNMENT = "center"
 SCORE_FONT = ("Courier", 15, "normal")
 GAME_OVER_FONT = ("Courier", 50, "bold")
 
-class ScoreBoard(Turtle):
 
+class ScoreBoard(Turtle):
     def __init__(self):
         super().__init__()
         self.penup()
-        self.goto(0,270)
+        self.goto(0, 270)
         self.color("white")
         self.hideturtle()
         self.score = 0
         self.update()
-        
+
     def update(self):
         self.write(f"score: {self.score}", align=ALIGNMENT, font=SCORE_FONT)
 
