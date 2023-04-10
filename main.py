@@ -4,18 +4,15 @@ from food import Food
 from scoreboard import ScoreBoard
 import time
 
-
 def compute_sleep_interval(level):
     if level.lower() == "hard":
         return 0.05
     if level.lower() == "medium":
-        return 0.1
+       return 0.1
     return 0.15
-
 
 def has_snake_eaten_food(snake, food):
     return snake.head.distance(food) < 20
-
 
 screen = Screen()
 screen.setup(600, 600)
@@ -46,10 +43,12 @@ while is_game_on:
         food.add_new()
         score_board.refresh()
         snake.extend()
-
+    
     if snake.game_over():
-        is_game_on = False
+        # is_game_on = False
         score_board.show_game_over()
+        score_board.reset()
+        snake.reset()
 
-
-screen.exitonclick()
+     
+screen.exitonclick() 
